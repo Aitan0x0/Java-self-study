@@ -1,4 +1,4 @@
-//Massivdeki ededlerin ededi ortasini tapan ve ededi ortadan boyuk ededleri print eden kod
+package Tasks;//Massivdeki ededlerin ededi ortasini tapan ve ededi ortadan boyuk ededleri print eden kod
 
 import java.util.Scanner;
 

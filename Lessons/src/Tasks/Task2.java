@@ -1,4 +1,4 @@
-//massivdeki max elementi qaytaran kod
+package Tasks;//massivdeki max elementi qaytaran kod
 
 import java.util.Scanner;
 

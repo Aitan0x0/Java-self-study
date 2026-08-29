@@ -1,4 +1,4 @@
-//reqemin tersini yazan kod (reverse)
+package Tasks;//reqemin tersini yazan kod (reverse)
 
 import java.util.Scanner;
 

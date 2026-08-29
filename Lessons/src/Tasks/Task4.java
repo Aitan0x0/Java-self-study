@@ -1,4 +1,4 @@
-//Ededin polindrom olub-olmamsinin teyini
+package Tasks;//Ededin polindrom olub-olmamsinin teyini
 
 import java.util.Scanner;
 
