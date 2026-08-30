@@ -13,7 +13,6 @@ public class Task6 {
         findGrade(score);
         scanner.close();
     }
-
     public static void findGrade(int score){
         if(score>100 || score<0){
             System.out.println("duzgun bal daxil edilmeyib");
