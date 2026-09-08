@@ -7,6 +7,7 @@ import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+///Productlarin yerlesdiyi inventory'dir
 public class StoreInventory {
     private static final Logger log = LoggerFactory.getLogger(StoreInventory.class);
 

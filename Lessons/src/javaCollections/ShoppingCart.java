@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-
+///Produktlar ucun sebetdir , yaradib add ile elave edirik
 public class ShoppingCart {
     private static final Logger log = LoggerFactory.getLogger(ShoppingCart.class);
 
@@ -29,5 +29,7 @@ public class ShoppingCart {
         }
         return total;
     }
+    StoreInventory inventory1 = new StoreInventory();
+
 
 }
