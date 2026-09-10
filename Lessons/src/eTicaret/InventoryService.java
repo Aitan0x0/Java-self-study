@@ -1,11 +1,16 @@
 package eTicaret;
 
+import eTicaret.Model.AllOrders;
 import eTicaret.Model.Order;
 import eTicaret.Model.Product;
+import eTicaret.Model.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 
 /// Daxilinde stock listi ve Orders listi var
 public class InventoryService {
@@ -15,9 +20,6 @@ public class InventoryService {
 //    private List<Order> orders = new ArrayList<>();
 
 
-
-
-
     public List<Product> getStock() {
         return stock;
     }
@@ -25,7 +27,7 @@ public class InventoryService {
     public List<Product> getLowStockProduct(List<Product> products) {
         if (products == null)
             throw new IllegalArgumentException("Bele product yoxdur.");
-        return products.stream().filter(product -> product.getPrice() < 5).toList();
+        return products.stream().filter(product -> product.getQuantity() < 5).toList();
     }
 
     public void addProductsToStock(Product product) {
@@ -36,6 +38,7 @@ public class InventoryService {
         } else {
             stock.add(product);
             log.info("Yeni mehsul stocka elave olundu.");
+
         }
     }
 
@@ -43,10 +46,18 @@ public class InventoryService {
         return stock.stream().map(Product::getName).toList();
     }
 
-    public double getTotalSpendByCostumer(String costumerName) {
-        List<Order> existCostumerOrders = orders.stream()
-        if()
 
+    /// Costumerin Completed order ucun xerclediyi umumi mebleg
+    public double getTotalSpendByCostumer(String costumerName, AllOrders allOrders) {
+        List<Order> allOrdersList = allOrders.getAllOrders();
+        List<Order> existOrders = allOrdersList.stream().filter(o -> o.getCustomerName().equalsIgnoreCase(costumerName)).
+                filter(o -> o.getStatus().equals(Status.COMPLETED)).toList();
+        if (existOrders.isEmpty()) {
+            log.warn("Bu istifadecinin orderi ve ya completed orderi yoxdur ");
+            return 0.00;
+        } else {
+            return existOrders.stream().mapToDouble(Order::getOrdersTotal).sum();
+        }
 
     }
 

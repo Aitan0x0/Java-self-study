@@ -14,16 +14,17 @@ public class Order {
     private String customerName;
     private List<OrderItem> items = new ArrayList<>();
     private Status status;
+//    private double total ;
 
     public Order(long id, List<OrderItem> items, String customerName, Status status, AllOrders allOrders) {
         if (items == null || items.isEmpty()) {
-            throw new IllegalArgumentException("Sifarişin daxilində ən azı 1 məhsul olmalıdır!");
+            throw new IllegalArgumentException("Sifarisin daxilinde en azi 1 mehsul olmalidir");
         }
         if (allOrders == null) {
-            throw new IllegalArgumentException("AllOrders mərkəzi sistemi null ola bilməz!");
+            throw new IllegalArgumentException("AllOrders null ola bilmez");
         }
         if (customerName == null || customerName.isBlank()) {
-            throw new IllegalArgumentException("Müştəri adı boş ola bilməz!");
+            throw new IllegalArgumentException("Musteri adi bos ola bilmez");
         }
 
         this.id = id;
@@ -34,6 +35,10 @@ public class Order {
 
         registerToAllOrders(allOrders);
         log.info("Yeni sifaris daxil edildi: ID = {}", id);
+    }
+
+    public double getOrdersTotal(){
+       return items.stream().mapToDouble(OrderItem::getOrderItemsTotal).sum();
     }
 
 
@@ -61,6 +66,7 @@ public class Order {
     public int hashCode() {
         return Objects.hash(id, customerName);
     }
+
 
     @Override
     public boolean equals(Object obj) {
